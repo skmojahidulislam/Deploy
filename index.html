@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List App</title>
+
+</head>
+<body>
+    <input id="taskEnter" placeholder="Add task">
+    <button onclick="addTask()">Add</button>
+    <ul id="toDoList"></ul>
+    
+    <script>
+        function addTask() {
+            const taskInput = document.querySelector("#taskEnter");
+            const inputVal = taskInput.value.trim();
+
+            if(inputVal === "") return;
+
+            const li = document.createElement("li");
+            li.innerHTML = `${inputVal} <button onclick = "this.parentElement.remove()">❌</button>`;
+            li.addEventListener("click", () => li.classList.toggle("done"))
+            document.querySelector("#toDoList").appendChild(li)
+        }
+    </script>
+    <style>
+        li.done {
+            text-decoration: line-through;
+        }
+    </style>
+</body>
+</html>
